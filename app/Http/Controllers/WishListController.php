@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Session;
 
 class WishListController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function getWishList()
     {
         $wish_list = WishList::all();                

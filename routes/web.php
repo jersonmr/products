@@ -11,18 +11,20 @@
 |
 */
 
-
-
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
+// Default route
 Route::get('/', ['uses' => 'ProductController@getDataProducts', 'as' => 'list-products']);
+
+// Crawler route
 Route::post('add-to-wishlist', ['uses' => 'ProductController@saveProduct', 'as' => 'add-item']);
 
+// Wish List actions route
 Route::get('wish-list', ['uses' => 'WishListController@getWishList', 'as' => 'list-items']);
 Route::get('delete-item-wish/{id}', ['uses' => 'WishListController@deleteItem', 'as' => 'delete-item']);
 
+// Update profile route
+Route::get('update-profile', ['uses' => 'ProfileController@showProfile', 'as' => 'my-profile']);
+Route::post('update-profile/{id}', ['uses' => 'ProfileController@updateProfile', 'as' => 'update-profile']);
+
+// Scaffolding Auth
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
