@@ -17,8 +17,11 @@
     return view('welcome');
 });*/
 
-Route::get('/', 'CrawlerController@getDataProducts');
-Route::get('wish-list/{url}', 'CrawlerController@saveProduct');
+Route::get('/', ['uses' => 'ProductController@getDataProducts', 'as' => 'list-products']);
+Route::post('add-to-wishlist', ['uses' => 'ProductController@saveProduct', 'as' => 'add-item']);
+
+Route::get('wish-list', ['uses' => 'WishListController@getWishList', 'as' => 'list-items']);
+Route::get('delete-item-wish/{id}', ['uses' => 'WishListController@deleteItem', 'as' => 'delete-item']);
 
 Auth::routes();
 
