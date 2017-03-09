@@ -104,7 +104,8 @@ class ProductController extends Controller
      */
     public function cache($element_name, $element)
     {
-        Cache::put($element_name, array_slice($element, 0, 10), 11);
+        // (60*24) One day of duration for the cache vars
+        Cache::put($element_name, array_slice($element, 0, 10), (60*24));
     }
 
     /**
