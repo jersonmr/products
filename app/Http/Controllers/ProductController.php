@@ -15,10 +15,10 @@ class ProductController extends Controller
         if(!Cache::has('expensive_images') || !Cache::has('expensive_titles') || !Cache::has('expensive_options') || !Cache::has('expensive_prices')) {                     
 
             // Processing the 10 expensive products
-            $this->getCheapestProducts("https://www.appliancesdelivered.ie/search?sort=price_desc", "expensive");  
+            $this->getProducts("https://www.appliancesdelivered.ie/search?sort=price_desc", "expensive");  
 
             // Processing the 10 cheapest products
-            $this->getCheapestProducts("https://www.appliancesdelivered.ie/search", "cheapest");          
+            $this->getProducts("https://www.appliancesdelivered.ie/search", "cheapest");          
         }
 
         // Getting the cached data
